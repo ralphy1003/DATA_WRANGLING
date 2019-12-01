@@ -1,0 +1,7 @@
+import pandas as pd
+messy={'Box': ['Box1','Box1','Box1','Box2','Box2','Box2'], 'Dimension': ['Length','Width','Height','Length','Width','Height'], 'Value': [6,4,2,5,3,4]}
+DataF=pd.DataFrame(messy,columns=['Box','Dimension','Value'])
+tidy=DataF.pivot_table(index = ['Box'], columns = 'Dimension', values = 'Value').reset_index()
+addvol=tidy.iloc[0,1]*tidy.iloc[0,2]*tidy.iloc[0,3]
+addvol2 = tidy.iloc[1,1]*tidy.iloc[1,2]*tidy.iloc[1,3]
+addcol = tidy['Volume'] = [addvol, addvol2]
